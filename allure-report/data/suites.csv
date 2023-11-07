@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Nov 07 15:02:39 EET 2023","Tue Nov 07 15:02:53 EET 2023","13939","","PageClicTest","","PageClicTest","testClick","TestClickPage","tikrinam get metoda, ir ziurim sarasa"
