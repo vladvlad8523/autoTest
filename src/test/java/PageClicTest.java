@@ -14,7 +14,7 @@ public class PageClicTest extends BaseSettingsTest{
     Category name = new Category( "A", "");
     String text = String.valueOf(name);
 
-    @Issue(value = "TechIn komandinis darbas 2023.11.01")
+    @Issue(value = "TechIn komandinis darbas 2023.10.23")
     @Link(name = "GitHubApi", url = "https://github.com/vladvlad8523/BookReservationAppApplicationTests.git")
     @Owner(value = "https://github.com/vladvlad8523")
     @DisplayName("TestClickPage")

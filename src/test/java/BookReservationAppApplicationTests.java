@@ -1,7 +1,8 @@
 import io.qameta.allure.*;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Assertions;
+import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -11,10 +12,10 @@ import static org.hamcrest.Matchers.equalTo;
 class BookReservationAppApplicationTests extends BaseSettingsTest {
     private  final static String URL = "http://localhost:8080";
 
-    @Issue(value = "TechIn komandinis darbas 2023.11.01")
+    @Issue(value = "TechIn komandinis darbas 2023.10.23")
     @Link(name = "GitHubApi", url = "https://github.com/vladvlad8523/BookReservationAppApplicationTests.git")
     @Owner(value = "https://github.com/vladvlad8523")
-    @DisplayName("showNamesTestTikrinamGetMetoda")
+    @DisplayName("Show Names Test Tikrinam Get Metoda")
     @Description("tikrinam get metoda, ir ziurim sarasa")
     void showNamesTest() {
         String users = given()
@@ -25,7 +26,7 @@ class BookReservationAppApplicationTests extends BaseSettingsTest {
                 .statusCode(200)
                 .extract().body().jsonPath().getString("name");
     }
-    @Issue(value = "TechIn komandinis darbas 2023.11.01")
+    @Issue(value = "TechIn komandinis darbas 2023.10.23")
     @DisplayName("POST TEST 3x random")
     @Description("tikrinam metoda, POST")
     @RepeatedTest(3)
@@ -47,7 +48,7 @@ class BookReservationAppApplicationTests extends BaseSettingsTest {
 
         }
     }
-    @Issue(value = "TechIn komandinis darbas 2023.11.01")
+    @Issue(value = "TechIn komandinis darbas 2023.10.23")
     @DisplayName("POST TEST 3x")
     @Description("tikrinam metoda, POST")
     @RepeatedTest(3)
@@ -73,27 +74,49 @@ class BookReservationAppApplicationTests extends BaseSettingsTest {
             e.printStackTrace();
         }
     }
-    @Issue(value = "TechIn komandinis darbas 2023.11.01")
-    @DisplayName("TestCategoryPut")
-    @Description("tikrinam get metoda, PUT")
+    @Issue(value = "TechIn komandinis darbas 2023.10.23")
+    @DisplayName("Test Category Put")
+    @Description("tikrinam metoda, PUT")
     @Test
     public void testCategoryPut() {
         String expectedCategory = "category";
-        String actualCategory = "category";
+        int actualCategory = 1;
 
-        Assertions.assertEquals(expectedCategory, actualCategory);
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("name", "Kaunas");
 
         given()
-                .pathParam("category", actualCategory)
+                .filter(new AllureRestAssured())
+                .log().all()
+                .pathParam("id", actualCategory)
                 .log().body()
-                .contentType("ContentType.JSON")
-                .body(actualCategory)
+                .contentType(ContentType.JSON)  // Use ContentType.JSON to set the request content type
+                .body(requestBody.toString())  // Convert the JSON object to a string
                 .when()
-                .put(URL + "/categories/{category}")
+                .put(URL + "/categories/{id}")
+                .prettyPeek()
                 .then()
                 .log().body()
-                .statusCode(Matchers.oneOf(200, 405, 204))
-                .and().body("body", equalTo(actualCategory));
+                .statusCode(Matchers.oneOf(200, 405, 204));
+    }
+    @Issue(value = "TechIn komandinis darbas 2023.10.23")
+    @DisplayName("Test Category Delete")
+    @Description("tikrinam metoda, DELETE")
+    @Test
+    public void testCategoryDelete() {
+        int categoryId = 1;
+
+        given()
+                .filter(new AllureRestAssured())
+                .log().all()
+                .pathParam("id", categoryId)
+                .when()
+                .delete(URL + "/categories/{id}")
+                .prettyPeek()
+                .then()
+                .log().body()
+                .statusCode(Matchers.oneOf(200, 404))
+                .body("message", equalTo("Category deleted successfully"));
     }
 }
 //allure generate target/allure-results --clean
