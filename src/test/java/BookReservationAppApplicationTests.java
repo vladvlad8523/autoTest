@@ -1,7 +1,6 @@
 import io.qameta.allure.*;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.parsing.Parser;
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
@@ -90,7 +89,7 @@ class BookReservationAppApplicationTests extends BaseSettingsTest {
     @Test
     public void testCategoryPut() {
         String expectedCategory = "category";
-        Integer actualCategory = 1;
+        int actualCategory = 1;
 
         JSONObject requestBody = new JSONObject();
         requestBody.put("name", "Mariampole");

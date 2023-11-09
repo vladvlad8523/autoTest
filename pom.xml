@@ -14,12 +14,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-                <junit.version>5.6.2</junit.version>
+        <junit.version>5.6.2</junit.version>
         <maven-surefire.version>3.0.0-M5</maven-surefire.version>
         <aspectj.version>1.9.5</aspectj.version>
         <allure-maven.version>2.11.2</allure-maven.version>
         <reportVersion.version>2.4.1</reportVersion.version>
-                <selenium-java.version>3.141.59</selenium-java.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
         <webdrivermanager.version>LATEST</webdrivermanager.version>
         <slf4j-simple.version>1.7.30</slf4j-simple.version>
         <allure.results.directory>target/allure-results</allure.results.directory>
