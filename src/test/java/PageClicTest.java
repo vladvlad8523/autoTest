@@ -5,9 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
-
 import java.util.Arrays;
-
 import static com.codeborne.selenide.Selenide.*;
 
 //@ExtendWith(TestListener)
@@ -17,11 +15,11 @@ public class PageClicTest extends BaseSettingsTest {
     String text = String.valueOf(name);
 
     @Issue(value = "TechIn komandinis darbas 2023.10.23")
-    @Link(name = "GitHubApi", url = "https://github.com/vladvlad8523/BookReservationAppApplicationTests.git")
+    @Link(name = "GitHubApi", url = "https://github.com/vladvlad8523/")
     @Owner(value = "https://github.com/vladvlad8523")
-    @DisplayName("TestClickPage")
-    @Description("tikrinam get metoda, ir ziurim sarasa")
-    @Story("POSITIVE TEST")
+    @DisplayName("Test Click Page")
+    @Description("tikrinam linkus, fomrmas")
+    @Story("CRASH TEST")
     @Test
     void testClick() {
         Configuration.browser = "chrome";
