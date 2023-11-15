@@ -142,4 +142,5 @@ class BookReservationAppApplicationTests extends BaseSettingsTest {
 todo: allure generate target/allure-results --clean
 todo: allure serve
 todo: mvn clean test -Dtest="BookReservationAppApplicationTests#showNamesTest"
+todo: sudo service jenkins stop
 */
