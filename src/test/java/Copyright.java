@@ -12,7 +12,7 @@ public class Copyright extends BaseSettingsTest {
     @Description("Tikrinam Copyright 2023. All Rights Reserved")
     @Story("POSITIVE TEST")
     @Test
-    public void copyrightTest() {
+    void copyrightTest() {
         Configuration.browser = "chrome";
         Configuration.browserSize = "768x1024";
         open("http://localhost:3000");

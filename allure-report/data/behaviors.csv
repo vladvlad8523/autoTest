@@ -1,4 +1,4 @@
 "Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
-"#project.description#","","POSITIVE TEST","0","0","10","0","0"
+"#project.description#","Testai atidaromi narsikleje ir spaudziamos nuorodos narsikleje","CRASH TEST","0","1","0","0","0"
 "#project.description#","","NEGATIVE TEST","3","0","0","0","0"
-"#project.description#","Testai atidaromi narsikleje ir spaudziamos nuorodos narsikleje","CRASH TEST","0","0","1","0","0"
+"#project.description#","","POSITIVE TEST","2","3","4","0","0"
