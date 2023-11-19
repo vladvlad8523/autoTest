@@ -2,6 +2,7 @@ import com.codeborne.selenide.Configuration;
 import io.qameta.allure.*;
 import junit.framework.TestListener;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
@@ -21,6 +22,7 @@ public class PageClicTest extends BaseSettingsTest {
     @Description("tikrinam linkus, fomrmas")
     @Story("CRASH TEST")
     @Test
+    @Order(4)
     void testClick() {
         Configuration.browser = "chrome";
         Configuration.browserSize = "1680x1050";

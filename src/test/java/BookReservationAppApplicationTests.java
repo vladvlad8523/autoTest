@@ -4,6 +4,7 @@ import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +21,7 @@ class BookReservationAppApplicationTests extends BaseSettingsTest {
     @Description("tikrinam get metoda, ir ziurim sarasa")
     @Story("POSITIVE TEST")
     @Test
+    @Order(1)
     void showNamesTest() {
         String users = given()
                 .when()
@@ -87,6 +89,7 @@ class BookReservationAppApplicationTests extends BaseSettingsTest {
     @Description("tikrinam metoda, PUT")
     @Story("POSITIVE TEST")
     @Test
+    @Order(2)
     public void testCategoryPut() {
         try {
         String expectedCategory = "category";
@@ -123,6 +126,7 @@ class BookReservationAppApplicationTests extends BaseSettingsTest {
     @Description("tikrinam metoda, DELETE")
     @Story("POSITIVE TEST")
     @Test
+    @Order(3)
     public void testCategoryDelete() {
         int categoryId = 1;
 
@@ -139,6 +143,7 @@ class BookReservationAppApplicationTests extends BaseSettingsTest {
     }
 }
 /*
+todo: allure serve target/allure-results
 todo: allure generate target/allure-results --clean
 todo: allure serve
 todo: mvn clean test -Dtest="BookReservationAppApplicationTests#showNamesTest"
