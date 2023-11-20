@@ -1,4 +1,4 @@
 "Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
-"","","POSITIVE TEST","0","5","4","0","0"
-"","Testai atidaromi narsikleje ir spaudziamos nuorodos narsikleje","CRASH TEST","0","1","0","0","0"
-"","","NEGATIVE TEST","0","0","3","0","0"
+"","","POSITIVE TEST","0","0","9","0","0"
+"","","NEGATIVE TEST","2","0","1","0","0"
+"","","TEST FOR THE CLIENT","0","0","1","0","0"

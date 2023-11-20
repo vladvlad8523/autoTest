@@ -1,16 +1,14 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.logevents.SelenideLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.Before;
 import org.junit.jupiter.api.AfterAll;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 
 abstract public class BaseSettingsTest {
-    private WebDriver driver;
 
     public void setUp() {
         WebDriverManager.chromedriver().setup();
@@ -25,9 +23,6 @@ abstract public class BaseSettingsTest {
     }
     @Before
     public void  init() {
-        WebDriverRunner.setWebDriver(driver);
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
         setUp();
     }
     @AfterAll
