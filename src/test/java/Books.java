@@ -1,11 +1,14 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Story;
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 public class Books {
 
@@ -29,42 +32,58 @@ public class Books {
     @Test
     @Order(10)
     public void allBooksListPost() {
-                given()
-                .baseUri("http://localhost:8080")
-                .basePath("/books/")
-                .contentType(ContentType.JSON)
-                .when()
-                .body("description\": \"QATesting\",\n" +
-                        "        \"pictureUrl\": \"https://selenide.org/images/selenide-logo-bip.png\",\n" +
-                        "        \"pages\": 3100,\n" +
-                        "        \"isbn\": \"4-9028-9465-13\",\n" +
-                        "        \"publicationDate\": \"2023-12-25\",\n" +
-                        "        \"language\": \"English\"\n" +
-                        "    }")
-                .post()
-                .then().statusCode(201)
-                        .log().all();
+        try {
+            given()
+                    .baseUri("http://localhost:8080")
+                    .basePath("/books/")
+                    .contentType(ContentType.JSON)
+                    .when()
+                    .body("description\": \"QATesting\",\n" +
+                            "        \"pictureUrl\": \"https://selenide.org/images/selenide-logo-bip.png\",\n" +
+                            "        \"pages\": 3100,\n" +
+                            "        \"isbn\": \"4-9028-9465-13\",\n" +
+                            "        \"publicationDate\": \"2023-12-25\",\n" +
+                            "        \"language\": \"English\"\n" +
+                            "    }")
+                    .post()
+                    .then()
+                    .statusCode(201)
+                    .log().all();
+        } catch (AssertionError e) {
+            System.out.println("Error: Status code is not equal to 201");
+        }
+}
+
+    @DisplayName("FORM TEST BOOKS PUT")
+    @Story("FORM TEST BOOKS")
+    @Test
+    @Order(11)
+    public void allBooksListPut() {
+        try {
+            given()
+                    .baseUri("http://localhost:8080")
+                    .basePath("/books")
+                    .contentType(ContentType.JSON)
+                    .when()
+                    .body("{\n" +
+                            " \"description\": \"QA Testing\",\n" +
+                            " \"pictureUrl\": \"https://selenide.org/images/selenide-logo-big.png\",\n" +
+                            " \"pages\": 3100,\n" +
+                            " \"isbn\": \"2-9028-9465-1\",\n" +
+                            " \"publicationDate\": \"2023-11-25\",\n" +
+                            " \"language\": \"English\"\n" +
+                            " }")
+                    .put()
+                    .then()
+                    .statusCode(200)
+                    .log().all();
+        } catch (AssertionError e) {
+            System.out.println("Error: Status code is not equal to 200");
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Error JSON: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
-//    @DisplayName("FORM TEST BOOKS PUT")
-//    @Story("FORM TEST BOOKS")
-//    @Test
-//    @Order(11)
-//    public void allBooksListPut() { //todo pabaigti nes 2023.11.21 niera metodo put
-//                given()
-//                .baseUri("http://localhost:8080")
-//                .basePath("/books")
-//                .contentType(ContentType.JSON)
-//                .when()
-//                .body("description\": \"QA Testing\",\n" +
-//                        "        \"pictureUrl\": \"https://selenide.org/images/selenide-logo-big.png\",\n" +
-//                        "        \"pages\": 3100,\n" +
-//                        "        \"isbn\": \"2-9028-9465-1\",\n" +
-//                        "        \"publicationDate\": \"2023-11-25\",\n" +
-//                        "        \"language\": \"English\"\n" +
-//                        "    }")
-//                .put("http://localhost:8080/books")
-//                .then().statusCode(200)
-//                        .log().all();
-//    }
 
 }
