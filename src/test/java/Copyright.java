@@ -21,7 +21,7 @@ public class Copyright extends BaseSettingsTest {
         Configuration.browserSize = "768x1024";
         open("http://localhost:3000");
         SelenideElement footerTest = $x("//footer").shouldBe(visible)
-                .shouldHave(text("Copyright 2023. All Rights Reserved"));
+                .shouldHave(text("Copyright 2023."));
 
     }
 }

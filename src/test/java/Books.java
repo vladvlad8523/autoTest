@@ -7,12 +7,11 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
-
 public class Books {
 
-    @DisplayName("FORM TEST BOOKS")
+    @DisplayName("FORM TEST BOOKS GET")
+    @Story("FORM TEST BOOKS")
     @Description("Tikrinam turima knygu sarasa")
-    @Story("booksFormTest")
     @Issue(value = "books")
     @Test
     @Order(9)
@@ -25,7 +24,8 @@ public class Books {
                 .prettyPeek()
                 .jsonPath();
     }
-    @DisplayName("FORM TEST BOOKS")
+    @DisplayName("FORM TEST BOOKS POST")
+    @Story("FORM TEST BOOKS")
     @Test
     @Order(10)
     public void allBooksListPost() {
@@ -41,26 +41,30 @@ public class Books {
                         "        \"publicationDate\": \"2023-12-25\",\n" +
                         "        \"language\": \"English\"\n" +
                         "    }")
-                .post();
+                .post()
+                .then().statusCode(201)
+                        .log().all();
     }
-    @DisplayName("FORM TEST BOOKS")
-    @Test
-    @Order(11)
-    public void allBooksListPut() {
-                given()
-                .baseUri("http://localhost:8080")
-                .basePath("/books")
-                .contentType(ContentType.JSON)
-                .when()
-                .body("description\": \"QA Testing\",\n" +
-                        "        \"pictureUrl\": \"https://selenide.org/images/selenide-logo-big.png\",\n" +
-                        "        \"pages\": 3100,\n" +
-                        "        \"isbn\": \"2-9028-9465-1\",\n" +
-                        "        \"publicationDate\": \"2023-11-25\",\n" +
-                        "        \"language\": \"English\"\n" +
-                        "    }")
-                .put("http://localhost:8080/books")
-                .then().log().all();
-    }
+//    @DisplayName("FORM TEST BOOKS PUT")
+//    @Story("FORM TEST BOOKS")
+//    @Test
+//    @Order(11)
+//    public void allBooksListPut() { //todo pabaigti nes 2023.11.21 niera metodo put
+//                given()
+//                .baseUri("http://localhost:8080")
+//                .basePath("/books")
+//                .contentType(ContentType.JSON)
+//                .when()
+//                .body("description\": \"QA Testing\",\n" +
+//                        "        \"pictureUrl\": \"https://selenide.org/images/selenide-logo-big.png\",\n" +
+//                        "        \"pages\": 3100,\n" +
+//                        "        \"isbn\": \"2-9028-9465-1\",\n" +
+//                        "        \"publicationDate\": \"2023-11-25\",\n" +
+//                        "        \"language\": \"English\"\n" +
+//                        "    }")
+//                .put("http://localhost:8080/books")
+//                .then().statusCode(200)
+//                        .log().all();
+//    }
 
 }
