@@ -1,14 +1,11 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Story;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 
 public class Books {
 
@@ -58,7 +55,7 @@ public class Books {
     @Story("FORM TEST BOOKS")
     @Test
     @Order(11)
-    public void allBooksListPut() {
+    public void allBooksListPut() { //todo neijungtas PUT METODAS/disabled PUT METHOD
         try {
             given()
                     .baseUri("http://localhost:8080")
@@ -81,7 +78,7 @@ public class Books {
             System.out.println("Error: Status code is not equal to 200");
             e.printStackTrace();
         } catch (Exception e) {
-            System.out.println("Error JSON: " + e.getMessage());
+            System.out.println("Error JSON/disabled PUT METHOD: " + e.getMessage());
             e.printStackTrace();
         }
     }
